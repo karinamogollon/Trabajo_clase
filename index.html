@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PROGRACION AVANZADA</title>
+    <link rel="stylesheet" href="index.css">
+</head>
+<body>
+    <div class="container">
+        <div class="sidebar">
+            <h1>TRABAJO</h1>
+            <br>
+            <h1>Wendy Karina Mogollon Machuca</h1>
+            <br>
+            <h1>55223037</h1>
+        </div>
+        <div class="main">
+            <h2>Lista de Actividades</h2>
+            <table id="activities">
+                <thead>
+                    <tr>
+                        <th>Actividad</th>
+                        <th>Nota</th>
+                    </tr>
+                </thead>
+                <tbody>
+                </tbody>
+            </table>
+        </div>
+
+        <div class="stats">
+            <h2>Promedio y Estado</h2>
+            <div id="averageResult">Promedio: -</div>
+            <div id="statusResult">Estado: -</div>
+        </div>
+
+        <div class="form">
+            <h2>Agregar Actividad</h2>
+            <form id="activityForm">
+                <label for="activityName">Actividad:</label>
+                <input type="text" id="activityName" placeholder="Nombre de la actividad" required>
+                
+                <label for="activityGrade">Nota (0.0 - 5.0):</label>
+                <input type="number" id="activityGrade" min="0" max="5" step="0.1" placeholder="Ej: 4.5" required>
+                
+                <button type="submit">Guardar</button>
+            </form>
+        </div>
+    </div>
+
+    <script src="index.js"></script>
+</body>
+</html>
+
