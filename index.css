@@ -5,19 +5,38 @@ body {
     background-color: #f0f0f0;
 }
 
+
 .container {
     display: grid;
-    grid-template-columns: 1fr 2fr; /* El sidebar ocupa una fracción y el contenido principal dos */
-    grid-template-rows: auto auto auto; /* Tres filas para la tabla, el promedio/estado y el formulario */
+    grid-template-columns: 1fr 3fr; 
+    grid-template-rows: auto 1fr 1fr; 
     gap: 15px;
     height: 100vh;
     padding: 20px;
     text-align: center;
 }
 
+.container > .main + .stats {
+    background-color: #e0f7fa;
+    border: 1px solid #00acc1;
+}
+
+.container {
+    animation: fadeIn 1s ease-in;
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+}
+
 .sidebar {
     grid-column: 1 / 2;
-    grid-row: 1 / 4; /* Ocupa todo el alto a la izquierda */
+    grid-row: 1 / 4;
     background-color: #af5ed8;
     color: rgb(8, 8, 8);
     display: flex;
@@ -26,21 +45,61 @@ body {
     padding: 20px;
     text-align: center;
     flex-direction: column;
+    position: relative;
+
+}
+
+.sidebar{
+    animation: fadeIn 1s ease-in;
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+}
+
+.sidebar h1::before {
+   
+    display: inline-block;
+    margin-right: 10px;
+    font-size: 1.5em;
 }
 
 .sidebar h1 {
     margin: 0;
     font-size: 2em;
+    text-transform: uppercase;
 }
+
+
+.sidebar:hover {
+    background-color: #8e44ad;
+    cursor: pointer;
+}
+
 
 .main {
     grid-column: 2 / 3;
-    grid-row: 1 / 2; /* La tabla en la fila superior derecha */
+    grid-row: 1 / 2;
     background-color: #fff;
     padding: 20px;
     border-radius: 8px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    height: 50%;
+    transition: transform 0.3s ease;
 }
+
+
+
+
+.main:hover {
+    transform: scale(1.02);
+}
+
 
 .main table {
     width: 100%;
@@ -53,31 +112,53 @@ body {
     text-align: left;
 }
 
+
+.main th:hover {
+    background-color: #e0e0e0;
+    cursor: pointer;
+}
+
 .main th {
     background-color: #f2f2f2;
 }
 
+
 .stats {
     grid-column: 2 / 3;
-    grid-row: 2 / 3; /* El promedio y estado justo debajo de la tabla */
+    grid-row: 2 / 3;
     background-color: #fff;
     padding: 20px;
     border-radius: 8px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
     text-align: center;
+    height: 25%;
+    position: relative;
+}
+
+
+.stats::after {
+    content: "✓";
+    position: absolute;
+    right: 20px;
+    bottom: 20px;
+    font-size: 1.5em;
+    color: #82e0aa;
 }
 
 .stats h2 {
     margin-top: 0;
 }
 
+
 .form {
     grid-column: 2 / 3;
-    grid-row: 3 / 4; /* El formulario para agregar actividades en la parte inferior derecha */
+    grid-row: 3 / 4;
     background-color: #fff;
     padding: 20px;
     border-radius: 8px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    height: 25%;
+    position: relative;
 }
 
 .form label {
@@ -85,12 +166,19 @@ body {
     margin: 10px 0 5px;
 }
 
-.form input {
-    width: 100%;
-    padding: 10px;
-    margin-bottom: 10px;
-    border: 1px solid #ddd;
-    border-radius: 4px;
+
+.form input:focus {
+    border-color: #af5ed8;
+    outline: none;
+}
+
+
+.form input:valid {
+    border-color: #2ecc71;
+}
+
+.form input:invalid {
+    border-color: #e74c3c;
 }
 
 button {
@@ -103,17 +191,17 @@ button {
     transition: background-color 0.3s ease;
 }
 
+
 button:hover {
     background-color: #cb67cb;
+    transform: scale(1.05);
 }
 
-.approved {
-    color: rgb(82, 207, 191);
+
+button:active {
+    background-color: #9b59b6;
 }
 
-.not-approved {
-    color: red;
-}
 
 #averageResult.approved {
     color: green;
@@ -135,6 +223,7 @@ button:hover {
     25%, 75% { transform: translateX(-5px); }
     50% { transform: translateX(5px); }
 }
+
 
 .modal {
     display: none;
@@ -158,4 +247,9 @@ button:hover {
 
 .modal-content button {
     margin: 10px;
+}
+
+
+.modal:target {
+    display: flex;
 }
