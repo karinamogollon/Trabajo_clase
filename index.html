@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>PROGRACION AVANZADA</title>
+    <title>PROGRAMACION AVANZADA</title>
     <link rel="stylesheet" href="index.css">
 </head>
 <body>
@@ -22,12 +22,31 @@
                     <tr>
                         <th>Actividad</th>
                         <th>Nota</th>
+                        <th>Acciones</th> <!-- Nueva columna para los botones -->
                     </tr>
                 </thead>
                 <tbody>
                 </tbody>
             </table>
         </div>
+        
+        <!-- Modal para confirmar eliminación -->
+        <div id="deleteModal" class="modal">
+            <div class="modal-content">
+                <p id="deleteMessage"></p>
+                <button onclick="eliminarActividad()">Sí</button>
+                <button onclick="segundaConfirmacion()">No</button>
+            </div>
+        </div>
+        
+        <!-- Segunda confirmación -->
+        <div id="secondModal" class="modal">
+            <div class="modal-content">
+                <p>¿Estás seguro?</p>
+                <button onclick="cerrarSegundomodal()">Cancelar</button>
+            </div>
+        </div>
+        
 
         <div class="stats">
             <h2>Promedio y Estado</h2>
